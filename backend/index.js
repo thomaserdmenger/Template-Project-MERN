@@ -3,12 +3,17 @@ import cors from "cors"
 import mongoose from "mongoose"
 import "dotenv/config"
 import morgan from "morgan"
+import { UserRouter } from "./user/user.router.js"
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
+
+app.use("/api/v1/users", UserRouter)
+app.use("/api/v1/products", () => {})
+app.use("/api/v1/orders", () => {})
 
 await mongoose.connect(process.env.MONGODB_URI, { dbName: "TemplateMERN" })
 const PORT = process.env.PORT || 9000
