@@ -40,3 +40,26 @@ export const postRegisterUserCtrl = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+export const postVerifyEmailCtrl = async (req, res) => {
+  try {
+    const { email, sixDigitCode } = req.body
+
+    const user = await User.findOne({ email })
+    if (!user) return res.status(400).json("User not found. Please register.")
+    if (user.isVerified) return res.status(499).json("E-Mail already verified.")
+    if (user.verificationCode !== sixDigitCode)
+      return res.status(500).json("Wrong 6 Digit Code. Try again.")
+
+    const verifiedUser = await User.findOneAndUpdate(
+      { email },
+      { $set: { isVerified: true } },
+      { new: true }
+    )
+
+    res.json(userToView(verifiedUser))
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: error.message })
+  }
+}
