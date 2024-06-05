@@ -3,6 +3,7 @@ import { User } from "./user.model.js"
 import { userToView } from "../utils/userToView.js"
 import { sendEmail } from "../utils/sendEmail.js"
 import { createSixDigitCode } from "../utils/createSixDigitCode.js"
+import { createAccessToken } from "../utils/createAccessToken.js"
 
 export const postRegisterUserCtrl = async (req, res) => {
   try {
@@ -34,7 +35,7 @@ export const postRegisterUserCtrl = async (req, res) => {
         Please enter your 6 Digit Code to verify your E-Mail: ${registerdUser.verificationCode}`,
     })
 
-    res.json(userToView(registerdUser))
+    res.json({ user: userToView(registerdUser) })
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: error.message })
@@ -57,7 +58,38 @@ export const postVerifyEmailCtrl = async (req, res) => {
       { new: true }
     )
 
-    res.json(userToView(verifiedUser))
+    res.json({ user: userToView(verifiedUser) })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
+export const postLoginUserCtrl = async (req, res) => {
+  try {
+    const { email, password } = req.body
+
+    const user = await User.findOne({ email })
+
+    if (!user) {
+      return res.status(400).json("User does not exist. Please register.")
+    }
+
+    if (!user.isVerified) {
+      return res.status(400).json("User cannot login. Please verify your E-Mail.")
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password)
+
+    if (!isPasswordCorrect) {
+      return res.status(400).json("Incorrect password. Please try again.")
+    }
+
+    const accessToken = createAccessToken(user)
+
+    res.cookie("accessToken", accessToken, { maxAge: 7 * 24 * 3600 * 1000, httpOnly: true })
+
+    res.json({ user: userToView(user) })
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: error.message })
