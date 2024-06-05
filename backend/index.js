@@ -1,12 +1,11 @@
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
-// import { config } from "dotenv"
-import "dotenv/config"
+import { config } from "dotenv"
 import morgan from "morgan"
 import { UserRouter } from "./user/user.router.js"
 
-// config()
+config()
 
 const app = express()
 
