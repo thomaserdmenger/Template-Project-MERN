@@ -1,4 +1,6 @@
 import { Router } from "express"
-import { postRegisterUserCtrl } from "./user.controller.js"
+import { postRegisterUserCtrl, postVerifyEmailCtrl } from "./user.controller.js"
 
-export const UserRouter = Router().post("/register", postRegisterUserCtrl)
+export const UserRouter = Router()
+  .post("/register", postRegisterUserCtrl)
+  .post("/verify-email", postVerifyEmailCtrl)
