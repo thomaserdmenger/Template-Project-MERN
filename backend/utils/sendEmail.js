@@ -1,8 +1,5 @@
 import { google } from "googleapis"
 import nodemailer from "nodemailer"
-import { config } from "dotenv"
-
-config({ path: "../.env" })
 
 const GMAIL_ADDRESS = process.env.GMAIL_ADDRESS
 const GMAIL_CLIENT_ID = process.env.GMAIL_CLIENT_ID

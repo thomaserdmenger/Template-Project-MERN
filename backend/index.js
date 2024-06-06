@@ -1,16 +1,16 @@
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
-import { config } from "dotenv"
 import morgan from "morgan"
+import cookieParser from "cookie-parser"
+import "dotenv/config"
 import { UserRouter } from "./user/user.router.js"
-
-config()
 
 const app = express()
 
-app.use(express.json())
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }))
+app.use(express.json())
+app.use(cookieParser())
 app.use(morgan("dev"))
 
 app.use("/api/v1/users", UserRouter)

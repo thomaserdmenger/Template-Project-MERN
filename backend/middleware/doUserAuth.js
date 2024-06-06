@@ -1,7 +1,4 @@
 import jwt from "jsonwebtoken"
-import { config } from "dotenv"
-
-config({ path: "../.env" })
 
 const jwtSecret = process.env.JWT_SECRET
 
