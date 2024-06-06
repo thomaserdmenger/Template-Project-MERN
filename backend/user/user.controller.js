@@ -95,3 +95,27 @@ export const postLoginUserCtrl = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+export const getShowAllUsersCtrl = async (_req, res) => {
+  try {
+    const users = await User.find({})
+    if (!users) res.status(400).json("Could not find users")
+
+    res.json({ users })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
+export const getOneUsersCtrl = async (req, res) => {
+  try {
+    const user = await User.findById(req.authenticatedUser._id)
+    if (!user) res.status(400).json("Could not find users")
+
+    res.json({ user })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: error.message })
+  }
+}
