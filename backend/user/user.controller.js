@@ -95,3 +95,15 @@ export const postLoginUserCtrl = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+export const getShowAllUsersCtrl = async (req, res) => {
+  try {
+    const allUsers = User.find({ _id: req.authenticatedUser._id })
+    if (!allUsers) res.status(400).json("Could not find users")
+
+    res.json({ users: allUsers })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: error.message })
+  }
+}
