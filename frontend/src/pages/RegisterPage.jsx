@@ -1,5 +1,5 @@
 const RegisterPage = () => {
-  return <div>Register</div>
+  return <div className="flex flex-col lg:flex-row">Register</div>
 }
 
 export default RegisterPage
