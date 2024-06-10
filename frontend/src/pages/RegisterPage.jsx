@@ -20,7 +20,7 @@ const RegisterPage = () => {
     setErrorMessage(false)
     setSuccessMassage(false)
 
-    if (firstname === "" || lastname === "" || username === "" || email === "" || password === "") {
+    if (!firstname || !lastname || !username || !email || !password) {
       return setErrorMessage(true)
     }
 
@@ -39,7 +39,7 @@ const RegisterPage = () => {
     const data = await res.json()
     setUser(data.user)
 
-    const navigateInterval = setInterval(() => {
+    setTimeout(() => {
       navigate("/verify-email")
     }, 2000)
 
@@ -50,8 +50,6 @@ const RegisterPage = () => {
     setUsername("")
     setEmail("")
     setPassword("")
-
-    return () => clearInterval(navigateInterval)
   }
 
   return (

@@ -48,7 +48,7 @@ export const postVerifyEmailCtrl = async (req, res) => {
 
     const user = await User.findOne({ email })
     if (!user) return res.status(400).json("User not found. Please register.")
-    if (user.isVerified) return res.status(499).json("E-Mail already verified.")
+    if (user.isVerified) return res.status(400).json("E-Mail already verified.")
     if (user.verificationCode !== sixDigitCode)
       return res.status(500).json("Wrong 6 Digit Code. Try again.")
 
