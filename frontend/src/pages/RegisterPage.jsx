@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { backendUrl } from "../api/api"
+import { UserContext } from "../context/Context"
+import { useNavigate } from "react-router-dom"
 
 const RegisterPage = () => {
+  const { setUser } = useContext(UserContext)
   const [firstname, setFirstname] = useState("")
   const [lastname, setLastname] = useState("")
   const [username, setUsername] = useState("")
@@ -9,6 +12,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState(false)
   const [successMessage, setSuccessMassage] = useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -16,7 +20,7 @@ const RegisterPage = () => {
     setErrorMessage(false)
     setSuccessMassage(false)
 
-    if (firstname === "" || lastname === "" || username === "" || email === "" || password === "") {
+    if (!firstname || !lastname || !username || !email || !password) {
       return setErrorMessage(true)
     }
 
@@ -33,10 +37,11 @@ const RegisterPage = () => {
     })
 
     const data = await res.json()
+    setUser(data.user)
 
-    console.log(data)
-    // ! Save user date
-    // ! Set interval to navigate user to email verification
+    setTimeout(() => {
+      navigate("/verify-email")
+    }, 2000)
 
     setSuccessMassage(true)
     setErrorMessage(false)

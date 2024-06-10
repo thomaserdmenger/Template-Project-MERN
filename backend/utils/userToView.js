@@ -5,5 +5,6 @@ export const userToView = (user) => {
     lastname: user.lastname,
     username: user.username,
     email: user.email,
+    isVerified: user.isVerified,
   }
 }
