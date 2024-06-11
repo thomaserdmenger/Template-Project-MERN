@@ -43,6 +43,7 @@ const VerifyEmailPage = () => {
     setTimeout(() => {
       navigate("/login")
     }, 2000)
+
     setSixDigitCode("")
   }
 

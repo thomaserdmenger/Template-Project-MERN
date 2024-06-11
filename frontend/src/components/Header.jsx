@@ -10,7 +10,7 @@ const Header = () => {
       <Link to="/">Company</Link>
       <nav>
         <div className="flex gap-4 items-center">
-          {!user.isVerified && <Link to="/register">Register</Link>}
+          {!user?.isVerified && <Link to="/register">Register</Link>}
 
           <Link
             to="/login"

@@ -1,0 +1,3 @@
+- Finish Login
+- Add Logout
+- Auth required => protected Routes
