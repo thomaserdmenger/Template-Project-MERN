@@ -41,7 +41,7 @@ const RegisterPage = () => {
 
     setTimeout(() => {
       navigate("/verify-email")
-    }, 2000)
+    }, 1000)
 
     setSuccessMassage(true)
     setErrorMessage(false)
