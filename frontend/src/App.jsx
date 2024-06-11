@@ -6,10 +6,13 @@ import LoginPage from "./pages/LoginPage"
 import { LoggedInContext, UserContext } from "./context/Context"
 import { useState } from "react"
 import VerifyEmailPage from "./pages/VerifyEmailPage"
+import AuthRequired from "./components/AuthRequired"
+import TestPage from "./pages/TestPage"
 
 function App() {
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
+  console.log(loggedIn)
 
   return (
     <LoggedInContext.Provider value={{ loggedIn, setLoggedIn }}>
@@ -46,6 +49,16 @@ function App() {
                 <Layout>
                   <LoginPage />
                 </Layout>
+              }
+            />
+            <Route
+              path="/test"
+              element={
+                <AuthRequired>
+                  <Layout>
+                    <TestPage />
+                  </Layout>
+                </AuthRequired>
               }
             />
           </Routes>

@@ -34,6 +34,7 @@ const LoginPage = () => {
       setErrorMessage(true)
       setEmail("")
       setPassword("")
+      setLoggedIn(false)
     }
 
     if (data.user) {
