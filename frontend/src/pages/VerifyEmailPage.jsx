@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { UserContext } from "../context/Context"
 import { backendUrl } from "../api/api"
+import { UserContext } from "../context/UserContext"
 
 const VerifyEmailPage = () => {
   const { user, setUser } = useContext(UserContext)

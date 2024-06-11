@@ -3,20 +3,16 @@ import Homepage from "./pages/Homepage"
 import Layout from "./components/Layout"
 import RegisterPage from "./pages/RegisterPage"
 import LoginPage from "./pages/LoginPage"
-import { LoggedInContext, UserContext } from "./context/Context"
-import { useState } from "react"
 import VerifyEmailPage from "./pages/VerifyEmailPage"
 import AuthRequired from "./components/AuthRequired"
 import TestPage from "./pages/TestPage"
+import { LoggedInProvider } from "./context/LoggedInContext"
+import { UserProvider } from "./context/UserContext"
 
 function App() {
-  const [user, setUser] = useState({})
-  const [loggedIn, setLoggedIn] = useState(false)
-  console.log(loggedIn)
-
   return (
-    <LoggedInContext.Provider value={{ loggedIn, setLoggedIn }}>
-      <UserContext.Provider value={{ user, setUser }}>
+    <LoggedInProvider>
+      <UserProvider>
         <BrowserRouter>
           <Routes>
             <Route
@@ -63,8 +59,8 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
-      </UserContext.Provider>
-    </LoggedInContext.Provider>
+      </UserProvider>
+    </LoggedInProvider>
   )
 }
 
