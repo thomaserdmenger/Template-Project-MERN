@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
-import { LoggedInContext, UserContext } from "../context/Context"
 import { backendUrl } from "../api/api"
+import { UserContext } from "../context/UserContext"
+import { LoggedInContext } from "../context/LoggedInContext"
 
 const Logout = () => {
   const { setUser } = useContext(UserContext)

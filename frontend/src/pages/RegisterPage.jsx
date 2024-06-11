@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { backendUrl } from "../api/api"
-import { UserContext } from "../context/Context"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../context/UserContext"
 
 const RegisterPage = () => {
   const { setUser } = useContext(UserContext)

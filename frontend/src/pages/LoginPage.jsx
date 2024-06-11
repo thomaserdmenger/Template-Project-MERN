@@ -1,7 +1,8 @@
 import { useContext, useState } from "react"
 import { backendUrl } from "../api/api"
-import { LoggedInContext, UserContext } from "../context/Context"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../context/UserContext"
+import { LoggedInContext } from "../context/LoggedInContext"
 
 const LoginPage = () => {
   const { setUser } = useContext(UserContext)

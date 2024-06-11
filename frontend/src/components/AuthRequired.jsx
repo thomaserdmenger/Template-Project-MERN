@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { LoggedInContext } from "../context/Context"
 import { Navigate } from "react-router-dom"
+import { LoggedInContext } from "../context/LoggedInContext"
 
 const AuthRequired = ({ children }) => {
   const { loggedIn } = useContext(LoggedInContext)

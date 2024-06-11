@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
-import { LoggedInContext, UserContext } from "../context/Context"
 import { useContext } from "react"
 import Logout from "./Logout"
+import { UserContext } from "../context/UserContext"
+import { LoggedInContext } from "../context/LoggedInContext"
 
 const Header = () => {
   const { user } = useContext(UserContext)
