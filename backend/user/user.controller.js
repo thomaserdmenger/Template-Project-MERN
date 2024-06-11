@@ -96,6 +96,16 @@ export const postLoginUserCtrl = async (req, res) => {
   }
 }
 
+export const postLogoutUserCtrl = async (_req, res) => {
+  try {
+    res.clearCookie("accessToken")
+    res.json({ message: "Logout successful!" })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
 export const getShowAllUsersCtrl = async (_req, res) => {
   try {
     const users = await User.find({})

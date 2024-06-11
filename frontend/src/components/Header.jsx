@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { LoggedInContext, UserContext } from "../context/Context"
 import { useContext } from "react"
+import Logout from "./Logout"
 
 const Header = () => {
   const { user } = useContext(UserContext)
@@ -14,9 +15,7 @@ const Header = () => {
           {!user?.isVerified && <Link to="/register">Register</Link>}
 
           {loggedIn ? (
-            <button className="bg-blue-600 text-white py-1 px-2 rounded border border-blue-600 hover:bg-white hover:text-blue-600 transition">
-              Logout
-            </button>
+            <Logout />
           ) : (
             <Link
               to="/login"
