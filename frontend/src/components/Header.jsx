@@ -12,6 +12,8 @@ const Header = () => {
       <Link to="/">Company</Link>
       <nav>
         <div className="flex gap-4 items-center">
+          {loggedIn && <Link to="/test">Test</Link>}
+
           {!user?.isVerified && <Link to="/register">Register</Link>}
 
           {loggedIn ? (
