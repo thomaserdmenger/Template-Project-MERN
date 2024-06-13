@@ -4,7 +4,7 @@
 - Registration
 - E-Mail-Verification
 - Login
-- httpOnly Cooky
+- httpOnly Cookie and JWT Access Token
 - localStorage when page is reloaded
 - Protected Routes
 - Layout Component
