@@ -17,6 +17,9 @@ const Logout = () => {
 
     setUser({})
     setLoggedIn(false)
+
+    localStorage.removeItem("user")
+    localStorage.removeItem("loggedIn")
   }
 
   return (

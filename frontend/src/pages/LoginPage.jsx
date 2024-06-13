@@ -46,6 +46,9 @@ const LoginPage = () => {
       setEmail("")
       setPassword("")
 
+      localStorage.setItem("user", JSON.stringify(data.user))
+      localStorage.setItem("loggedIn", JSON.stringify(true))
+
       setTimeout(() => {
         navigate("/")
       }, 1000)

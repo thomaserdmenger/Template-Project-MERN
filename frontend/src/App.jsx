@@ -6,10 +6,27 @@ import LoginPage from "./pages/LoginPage"
 import VerifyEmailPage from "./pages/VerifyEmailPage"
 import AuthRequired from "./components/AuthRequired"
 import TestPage from "./pages/TestPage"
-import { LoggedInProvider } from "./context/LoggedInContext"
-import { UserProvider } from "./context/UserContext"
+import { LoggedInContext, LoggedInProvider } from "./context/LoggedInContext"
+import { UserContext, UserProvider } from "./context/UserContext"
+import { useContext, useEffect } from "react"
 
 function App() {
+  // const { setLoggedIn } = useContext(LoggedInContext)
+  // const { setUser } = useContext(UserContext)
+
+  // useEffect(() => {
+  //   const userLocalStorage = JSON.parse(localStorage.getItem("user"))
+  //   const loggedInLocalStorage = JSON.parse(localStorage.getItem("loggedIn"))
+
+  //   if (userLocalStorage) {
+  //     setUser(userLocalStorage)
+  //   }
+
+  //   if (loggedInLocalStorage) {
+  //     setLoggedIn(loggedInLocalStorage)
+  //   }
+  // }, [])
+
   return (
     <LoggedInProvider>
       <UserProvider>
