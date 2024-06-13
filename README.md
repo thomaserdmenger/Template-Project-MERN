@@ -4,6 +4,7 @@
 - Registration
 - E-Mail-Verification
 - Login
+- httpOnly Cooky
 - localStorage when page is reloaded
 - Protected Routes
 - Layout Component
